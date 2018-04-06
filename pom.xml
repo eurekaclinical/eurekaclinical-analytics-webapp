@@ -11,12 +11,17 @@
 	</description>
 	<inceptionYear>2012</inceptionYear>
 	
+<!-- 	<parent> -->
+<!-- 		<groupId>org.eurekaclinical</groupId> -->
+<!-- 		<artifactId>eurekaclinical-parent-standard-deps</artifactId> -->
+<!-- 		<version>2</version> -->
+<!-- 	</parent> -->
+
 	<parent>
 		<groupId>org.eurekaclinical</groupId>
 		<artifactId>eurekaclinical-parent-standard-deps</artifactId>
-		<version>2</version>
+		<version>3-Alpha-2</version>
 	</parent>
-
 
 	<properties>
 		<tomcat.port>8080</tomcat.port>
@@ -222,70 +227,123 @@
                             </execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.apache.tomcat.maven</groupId>
-						<artifactId>tomcat7-maven-plugin</artifactId>
-						<dependencies>
-							<dependency>
-								<groupId>org.jasig.cas.client</groupId>
-								<artifactId>cas-client-core</artifactId>
-								<version>${cas-client-version}</version>
-								<exclusions>
-									<exclusion>
-										<groupId>javax.servlet</groupId>
-										<artifactId>servlet-api</artifactId>
-									</exclusion>
-								</exclusions>
-							</dependency>
-							<dependency>
-								<groupId>commons-codec</groupId>
-								<artifactId>commons-codec</artifactId>
-								<version>${commons-codec-version}</version>
-								<scope>compile</scope>
-							</dependency>
-						</dependencies>
-						<configuration>
-							<warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
-							<port>${tomcat.port}</port>
-							<httpsPort>${tomcat.httpsPort}</httpsPort>
-							<keystorePass>changeit</keystorePass>
-							<keystoreFile>conf/localhost.keystore</keystoreFile>
-							<keystoreType>JKS</keystoreType>
-							<additionalConfigFilesDir>${project.build.directory}/tomcat-config</additionalConfigFilesDir>
-							<systemProperties>
-								<org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true</org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>
-								<javax.net.ssl.trustStore>${project.build.directory}/tomcat/conf/localhost.truststore</javax.net.ssl.trustStore>
-								<javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword>
-								<eureka.config.dir>${project.build.directory}/eureka-config/eureka</eureka.config.dir>
-								<java.util.logging.config.file>${project.build.directory}/eureka-config/logging.properties</java.util.logging.config.file>
-							</systemProperties>
-							<webapps>
-							    <webapp>
+<!-- 	<plugin> -->
+<!--         <groupId>org.codehaus.mojo</groupId> -->
+<!--         <artifactId>properties-maven-plugin</artifactId> -->
+<!--         <version>1.0-alpha-2</version> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <goals> -->
+<!--               <goal>set-system-properties</goal> -->
+<!--             </goals> -->
+<!--             <configuration> -->
+<!--               <properties> -->
+<!--                 <property> -->
+<!--                   <name>javax.net.ssl.trustStore</name> -->
+<!--                   <value>${basedir}/src/main/resources/tomcat-server-config/localhost.truststore</value> -->
+<!--                 </property> -->
+<!--                 <property> -->
+<!--                   <name>javax.net.ssl.keyStorePassword</name> -->
+<!--                   <value>changeit</value> -->
+<!--                 </property> -->
+<!--               </properties> -->
+<!--             </configuration> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!-- </plugin> -->
+<!-- 					<plugin> -->
+<!-- 						<groupId>org.apache.tomcat.maven</groupId> -->
+<!-- 						<artifactId>tomcat7-maven-plugin</artifactId> -->
+<!-- 						<dependencies> -->
+<!-- 							<dependency> -->
+<!-- 								<groupId>org.jasig.cas.client</groupId> -->
+<!-- 								<artifactId>cas-client-core</artifactId> -->
+<!-- 								<version>${cas-client-version}</version> -->
+<!-- 								<exclusions> -->
+<!-- 									<exclusion> -->
+<!-- 										<groupId>javax.servlet</groupId> -->
+<!-- 										<artifactId>servlet-api</artifactId> -->
+<!-- 									</exclusion> -->
+<!-- 								</exclusions> -->
+<!-- 							</dependency> -->
+<!-- 							<dependency> -->
+<!-- 								<groupId>commons-codec</groupId> -->
+<!-- 								<artifactId>commons-codec</artifactId> -->
+<!-- 								<version>${commons-codec-version}</version> -->
+<!-- 								<scope>compile</scope> -->
+<!-- 							</dependency> -->
+<!-- 						</dependencies> -->
+<!-- 						<configuration> -->
+<!-- 							<warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory> -->
+<!-- 							<port>${tomcat.port}</port> -->
+<!-- 							<httpsPort>${tomcat.httpsPort}</httpsPort> -->
+<!-- 							<keystorePass>changeit</keystorePass> -->
+<!-- 							<keystoreFile>conf/localhost.keystore</keystoreFile> -->
+<!-- 							<keystoreType>JKS</keystoreType> -->
+<!-- 							<additionalConfigFilesDir>${project.build.directory}/tomcat-config</additionalConfigFilesDir> -->
+<!-- 							<systemProperties> -->
+<!-- 								<org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true</org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH> -->
+<!-- 								<javax.net.ssl.trustStore>${project.build.directory}/tomcat-config/localhost.truststore</javax.net.ssl.trustStore> -->
+<!-- 								<javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword> -->
+<!-- 								<eureka.config.dir>${project.build.directory}/eureka-config/eureka</eureka.config.dir> -->
+<!-- 								<java.util.logging.config.file>${project.build.directory}/eureka-config/logging.properties</java.util.logging.config.file> -->
+<!-- 							</systemProperties> -->
+<!-- 							<webapps> -->
+<!-- 							    <webapp> -->
+<!--                                     <groupId>org.eurekaclinical</groupId> -->
+<!--                                     <artifactId>cas-mock</artifactId> -->
+<!--                                     <version>${cas-mock-version}</version> -->
+<!--                                     <type>war</type> -->
+<!--                                     <asWebapp>true</asWebapp> -->
+<!--                                 </webapp> -->
+<!-- 								<webapp> -->
+<!-- 									<groupId>org.eurekaclinical</groupId> -->
+<!-- 									<artifactId>eurekaclinical-analytics-service</artifactId> -->
+<!-- 									<version>${eurekaclinical-analytics-service-version}</version> -->
+<!-- 									<type>war</type> -->
+<!-- 									<asWebapp>true</asWebapp> -->
+<!-- 								</webapp> -->
+<!-- 								<webapp> -->
+<!-- 									<groupId>org.eurekaclinical</groupId> -->
+<!-- 									<artifactId>eurekaclinical-protempa-service</artifactId> -->
+<!-- 									<version>${eurekaclinical-protempa-service-version}</version> -->
+<!-- 									<type>war</type> -->
+<!-- 									<asWebapp>true</asWebapp> -->
+<!-- 								</webapp>                                    -->
+<!-- 							</webapps> -->
+<!-- 							<addContextWarDependencies>true</addContextWarDependencies> -->
+<!-- 							<addWarDependenciesInClassloader>false</addWarDependenciesInClassloader> -->
+<!-- 						</configuration> -->
+<!-- 					</plugin> -->
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <deployables>
+                                <deployable>
+                                    <location>${project.build.directory}/${project.build.finalName}.${project.packaging}</location>
+                                </deployable>
+                                <deployable>
                                     <groupId>org.eurekaclinical</groupId>
                                     <artifactId>cas-mock</artifactId>
-                                    <version>${cas-mock-version}</version>
+<!--                                     <version>${cas-mock-version}</version> -->
                                     <type>war</type>
-                                    <asWebapp>true</asWebapp>
-                                </webapp>
-								<webapp>
-									<groupId>org.eurekaclinical</groupId>
+                                </deployable>
+                                <deployable>
+ 									<groupId>org.eurekaclinical</groupId>
 									<artifactId>eurekaclinical-analytics-service</artifactId>
-									<version>${eurekaclinical-analytics-service-version}</version>
-									<type>war</type>
-									<asWebapp>true</asWebapp>
-								</webapp>
-								<webapp>
+<!-- 									<version>${eurekaclinical-analytics-service-version}</version> -->
+                                    <type>war</type>
+                                </deployable>
+                                <deployable>
 									<groupId>org.eurekaclinical</groupId>
 									<artifactId>eurekaclinical-protempa-service</artifactId>
-									<version>${eurekaclinical-protempa-service-version}</version>
-									<type>war</type>
-									<asWebapp>true</asWebapp>
-								</webapp>                                   
-							</webapps>
-							<addContextWarDependencies>true</addContextWarDependencies>
-							<addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
-						</configuration>
-					</plugin>
+<!-- 									<version>${eurekaclinical-protempa-service-version}</version> -->
+                                    <type>war</type>
+                                </deployable>
+                            </deployables>
+                        </configuration>
+                    </plugin>
 					<plugin>
 					    <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -585,42 +643,74 @@
 						<configuration>
 							<systemPropertyVariables>
 								<eureka.config.dir>${project.build.directory}/test-classes/eureka-config/eureka</eureka.config.dir>
+<!-- 								<property> -->
+<!-- 									<name>ssl.debug</name> -->
+<!-- 									<value>true</value> -->
+<!-- 								</property> -->
+<!-- 								<property> -->
+<!-- 									<name>javax.net.ssl.keyStorePassword</name> -->
+<!-- 									<value>changeit</value> -->
+<!-- 								</property> -->
+<!-- 								<property> -->
+<!-- 									<name>javax.net.ssl.keyStoreType</name> -->
+<!-- 									<value>jks</value> -->
+<!-- 								</property> -->
+<!-- 								<property> -->
+<!-- 									<name>javax.net.ssl.keyStore</name> -->
+<!-- 									<value>${project.build.directory}/tomcat/conf/localhost.keystore</value> -->
+<!-- 								</property> -->
+<!-- 								<property> -->
+<!-- 									<name>javax.net.ssl.trustStore</name> -->
+<!-- 									<value>${project.build.directory}/tomcat/conf/localhost.truststore</value> -->
+<!-- 								</property> -->
+<!-- 								<property> -->
+<!-- 									<name>javax.net.ssl.trustStorePassword</name> -->
+<!-- 									<value>changeit</value> -->
+<!-- 								</property> -->
 							</systemPropertyVariables>
 							<workingDirectory>${project.build.directory}</workingDirectory>
+
 						</configuration>
 					</plugin>
 
 				</plugins>
 			</build>
 
-<!-- 			<dependencies> -->
-<!--                 <dependency> -->
-<!--                     <groupId>org.eurekaclinical</groupId> -->
-<!--                     <artifactId>eurekaclinical-analytics-service</artifactId> -->
-<!--                     <version>${eurekaclinical-analytics-service-version}</version> -->
-<!--                     <type>war</type> -->
-<!--                     <scope>runtime</scope> -->
-<!--                 </dependency> -->
-<!-- 				<dependency> -->
-<!--                     <groupId>org.eurekaclinical</groupId> -->
-<!--                     <artifactId>eurekaclinical-protempa-service</artifactId> -->
-<!--                     <version>${eurekaclinical-protempa-service-version}</version> -->
-<!--                     <type>war</type> -->
-<!--                     <scope>runtime</scope> -->
-<!--                 </dependency> -->
-<!--                 <dependency> -->
-<!--                      <groupId>org.eurekaclinical</groupId> -->
-<!--                      <artifactId>eurekaclinical-ontology</artifactId> -->
-<!--                      <version>${eurekaclinical-ontology-version}</version>  -->
-<!--                      <scope>runtime</scope> -->
-<!--                 </dependency> -->
-<!--                 <dependency> -->
-<!--                    <groupId>org.eurekaclinical</groupId> -->
-<!--                    <artifactId>aiw-i2b2-etl</artifactId> -->
-<!--                    <version>${aiw-i2b2-etl-version}</version> -->
-<!--                    <scope>runtime</scope> -->
-<!--                 </dependency> -->
-<!-- 			</dependencies> -->
+			<dependencies>
+                <dependency>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-analytics-service</artifactId>
+                    <version>${eurekaclinical-analytics-service-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+				<dependency>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-protempa-service</artifactId>
+                    <version>${eurekaclinical-protempa-service-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                     <groupId>org.eurekaclinical</groupId>
+                     <artifactId>eurekaclinical-ontology</artifactId>
+                     <version>${eurekaclinical-ontology-version}</version> 
+                     <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                   <groupId>org.eurekaclinical</groupId>
+                   <artifactId>aiw-i2b2-etl</artifactId>
+                   <version>${aiw-i2b2-etl-version}</version>
+                   <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                <groupId>org.eurekaclinical</groupId>
+                                    <artifactId>cas-mock</artifactId>
+                                    <version>${cas-mock-version}</version>
+                                                        <type>war</type>
+                                    <scope>runtime</scope>
+                </dependency>
+			</dependencies>
 		</profile>
 	</profiles>
 
