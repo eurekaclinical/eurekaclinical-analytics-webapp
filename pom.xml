@@ -1,71 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eurekaclinical</groupId>
-	<artifactId>eurekaclinical-analytics-webapp</artifactId>
-	<version>1.0-Alpha-2-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>Eureka! Clinical Analytics WebApp</name>
-	<description>Eureka! Clinical Analytics WebApp is the implementation 
-		of the Eureka! Clinical Analytics web user interface.
-	</description>
-	<inceptionYear>2012</inceptionYear>
-	<parent>
-		<groupId>org.eurekaclinical</groupId>
-		<artifactId>eurekaclinical-parent-standard-deps</artifactId>
-		<version>3-Alpha-2</version>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.eurekaclinical</groupId>
+    <artifactId>eurekaclinical-analytics-webapp</artifactId>
+    <version>1.0-Alpha-2-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Eureka! Clinical Analytics WebApp</name>
+    <description>Eureka! Clinical Analytics WebApp is the implementation 
+        of the Eureka! Clinical Analytics web user interface.
+    </description>
+    <inceptionYear>2012</inceptionYear>
+    <parent>
+        <groupId>org.eurekaclinical</groupId>
+        <artifactId>eurekaclinical-parent-standard-deps</artifactId>
+        <version>3-Alpha-2</version>
+    </parent>
 
-	<properties>
-		<tomcat.port>8080</tomcat.port>
+    <properties>
+        <tomcat.port>8080</tomcat.port>
         <tomcat.httpsPort>8443</tomcat.httpsPort>        
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-		<commons-codec-version>1.4</commons-codec-version>
-		<eurekaclinical-ontology-version>2.0</eurekaclinical-ontology-version>
-		<aiw-i2b2-etl-version>3.0</aiw-i2b2-etl-version>
-		<user-service-version>2.0-Alpha-2</user-service-version>
-	</properties>
+        <commons-codec-version>1.4</commons-codec-version>
+        <eurekaclinical-ontology-version>2.0</eurekaclinical-ontology-version>
+        <aiw-i2b2-etl-version>3.0</aiw-i2b2-etl-version>
+        <user-service-version>2.0-Alpha-2</user-service-version>
+        <cas-mock-version>2.1-Beta-1</cas-mock-version>
+        <eurekaclinical-analytics-service-version>1.0-Alpha-1</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>1.0-Alpha-2</eurekaclinical-protempa-service-version>
+    </properties>
 	
-	<scm>
-		<developerConnection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</developerConnection>
-		<connection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</connection>
-		<url>https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</url>
-		<tag>HEAD</tag>
-	</scm>
+    <scm>
+        <developerConnection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</developerConnection>
+        <connection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</connection>
+        <url>https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/eurekaclinical/eurekaclinical-analytics-webapp/issues</url>
-	</issueManagement>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/eurekaclinical/eurekaclinical-analytics-webapp/issues</url>
+    </issueManagement>
 	
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-			<distribution>manual</distribution>
-		</license>
-		<license>
-			<name>GNU General Public License, Version 3</name>
-			<url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
-			<distribution>manual</distribution>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>manual</distribution>
+        </license>
+        <license>
+            <name>GNU General Public License, Version 3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
 
 
-	<build>
-		<finalName>eurekaclinical-analytics-webapp</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.jasig.maven</groupId>
-				<artifactId>maven-notice-plugin</artifactId>
-				<configuration>
-					<noticeTemplate>etc/NOTICE.template</noticeTemplate>
-					<licenseMapping>
-						<param>etc/license-mappings.xml</param>
-					</licenseMapping>
-				</configuration>
-			</plugin>
-			<plugin>
+    <build>
+        <finalName>eurekaclinical-analytics-webapp</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>maven-notice-plugin</artifactId>
+                <configuration>
+                    <noticeTemplate>etc/NOTICE.template</noticeTemplate>
+                    <licenseMapping>
+                        <param>etc/license-mappings.xml</param>
+                    </licenseMapping>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
@@ -75,42 +78,42 @@
                     <workingDirectory>${project.build.directory}</workingDirectory>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<configuration>
-					<licenseName>apache2_gpl3</licenseName>
-					<licenseResolver>file:src/license</licenseResolver>
-					<roots>
-						<root>src/main</root>
-						<root>src/test/java/</root>
-					</roots>
-					<extraExtensions>
-						<!-- .xsd files are not supported by default -->
-						<!-- but should be commented in XML style -->
-						<xsd>xml</xsd>
-					</extraExtensions>
-					<excludes>
-						<exclude>**/*.htm</exclude>
-						<exclude>**/*.html</exclude>
-						<exclude>**/*.js</exclude>
-						<exclude>**/*.css</exclude>
-						<exclude>**/*.json</exclude>
-						<exclude>**/*.sql</exclude>
-					</excludes>
-				</configuration>
-				<executions>
-					<execution>
-						<id>first</id>
-						<goals>
-							<goal>update-file-header</goal>
-						</goals>
-						<phase>process-sources</phase>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-		<resources>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <licenseName>apache2_gpl3</licenseName>
+                    <licenseResolver>file:src/license</licenseResolver>
+                    <roots>
+                        <root>src/main</root>
+                        <root>src/test/java/</root>
+                    </roots>
+                    <extraExtensions>
+                        <!-- .xsd files are not supported by default -->
+                        <!-- but should be commented in XML style -->
+                        <xsd>xml</xsd>
+                    </extraExtensions>
+                    <excludes>
+                        <exclude>**/*.htm</exclude>
+                        <exclude>**/*.html</exclude>
+                        <exclude>**/*.js</exclude>
+                        <exclude>**/*.css</exclude>
+                        <exclude>**/*.json</exclude>
+                        <exclude>**/*.sql</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <excludes>
@@ -126,102 +129,16 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-	</build>
-
-	<profiles>
-		<profile>
-			<id>tomcat</id>
-			<properties>
-				<embedded-webserver-port>8000</embedded-webserver-port>
-				<cas-server-version>3.0-Alpha-26</cas-server-version>
-				<cas-mock-version>2.0</cas-mock-version>
-				<eurekaclinical-analytics-service-version>3.1-SNAPSHOT</eurekaclinical-analytics-service-version>
-				<eurekaclinical-protempa-service-version>3.1-SNAPSHOT</eurekaclinical-protempa-service-version>
-				<tomcat.httpsPort>8443</tomcat.httpsPort>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>copy-context.xml</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/tomcat-config</outputDirectory>
-									<resources>
-										<resource>
-											<directory>${basedir}/src/main/resources/tomcat-server-config</directory>
-											<filtering>true</filtering>
-											<includes>
-												<include>context.xml</include>
-											</includes>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-cert</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/tomcat-config</outputDirectory>
-									<resources>
-										<resource>
-											<directory>${basedir}/src/main/resources/tomcat-server-config</directory>
-											<filtering>false</filtering>
-											<includes>
-												<include>localhost.keystore</include>
-												<include>localhost.truststore</include>
-											</includes>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-                            <execution>
-                                <id>copy-logging.properties-file</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/eureka-config</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/main/resources</directory>
-                                            <includes>
-                                                <include>logging.properties</include>
-                                            </includes>
-                                            <filtering>true</filtering>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                           <execution>
-                                <id>copy-application.properties-file</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/eureka-config</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/main/resources/tomcat-eureka-config</directory>
-                                            <filtering>true</filtering>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-						</executions>
-					</plugin>
-
+    </build>
+    <profiles>
+        <profile>
+            <id>tomcat</id>
+            <properties>
+                <embedded-webserver-port>8000</embedded-webserver-port>
+                <tomcat.httpsPort>8443</tomcat.httpsPort>
+            </properties>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
@@ -236,91 +153,96 @@
                                     <type>war</type>
                                 </deployable>
                                 <deployable>
- 									<groupId>org.eurekaclinical</groupId>
-									<artifactId>eurekaclinical-analytics-service</artifactId>
+                                    <groupId>org.eurekaclinical</groupId>
+                                    <artifactId>eurekaclinical-analytics-service</artifactId>
                                     <type>war</type>
                                 </deployable>
                                 <deployable>
-									<groupId>org.eurekaclinical</groupId>
-									<artifactId>eurekaclinical-protempa-service</artifactId>
+                                    <groupId>org.eurekaclinical</groupId>
+                                    <artifactId>eurekaclinical-protempa-service</artifactId>
                                     <type>war</type>
                                 </deployable>
                                 <deployable>
-									<groupId>org.eurekaclinical</groupId>
-									<artifactId>eurekaclinical-user-service</artifactId> 
-									<type>war</type> 
+                                    <groupId>org.eurekaclinical</groupId>
+                                    <artifactId>eurekaclinical-user-service</artifactId> 
+                                    <type>war</type> 
                                 </deployable>
                             </deployables>
+                            <configuration>
+                                <properties>
+                                    <cargo.jvmargs>-Xmx4G</cargo.jvmargs>
+                                </properties>
+                            </configuration>
                         </configuration>
                     </plugin>
-					<plugin>
-					    <groupId>org.apache.maven.plugins</groupId>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <executions>
-	                        <execution>
-								<id>extract-eureka-ontology-h2-db</id>
-								<phase>generate-resources</phase>
+                            <execution>
+                                <id>extract-eureka-ontology-h2-db</id>
+                                <phase>generate-resources</phase>
                                 <goals>
                                     <goal>unpack</goal>
                                 </goals>
-								<configuration>
-									<artifactItems>
+                                <configuration>
+                                    <artifactItems>
                                         <artifactItem>
                                             <groupId>org.eurekaclinical</groupId>
                                             <artifactId>eurekaclinical-ontology</artifactId>
                                             <version>${eurekaclinical-ontology-version}</version> 
                                         </artifactItem>
                                     </artifactItems>
-									<includes>
-										eureka-db/eureka-ontology.mv.db,
-										eureka-db/eureka-ontology.trace.db
-									</includes>
-									<outputDirectory>${project.build.directory}</outputDirectory>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-sql-from-aiw-i2b2-etl</id>
-								<phase>generate-resources</phase>
+                                    <includes>
+                                        eureka-db/eureka-ontology.mv.db,
+                                        eureka-db/eureka-ontology.trace.db
+                                    </includes>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-sql-from-aiw-i2b2-etl</id>
+                                <phase>generate-resources</phase>
                                 <goals>
                                     <goal>unpack</goal>
-								</goals>
-								<configuration> 
-									<artifactItems>
+                                </goals>
+                                <configuration> 
+                                    <artifactItems>
                                         <artifactItem>
                                             <groupId>org.eurekaclinical</groupId>
                                             <artifactId>aiw-i2b2-etl</artifactId>
                                             <version>${aiw-i2b2-etl-version}</version> 
                                         </artifactItem>
                                     </artifactItems>
-									<includes>
-		 										sql/i2b2_data_tables_1_7_h2.sql, 
-												sql/mock_stored_procedures_h2.sql,
-										dbmigration/i2b2-data-schema-changelog.xml,
-									</includes>
-									<outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-dbmigration-from-eurekaclinical-user-service</id>
-								<phase>generate-resources</phase>
-								<goals>
-									<goal>unpack</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>org.eurekaclinical</groupId>
-											<artifactId>eurekaclinical-user-service</artifactId>
-											<version>${user-service-version}</version>
-											<type>war</type>
-										</artifactItem>
-									</artifactItems>
-									<includes>
-										WEB-INF/classes/dbmigration/changelog-master.xml
-									</includes>
-									<outputDirectory>${project.build.directory}/eurekaclinical-user-service</outputDirectory>
-								</configuration>
-							</execution>
+                                    <includes>
+                                        sql/i2b2_data_tables_1_7_h2.sql, 
+                                        sql/mock_stored_procedures_h2.sql,
+                                        dbmigration/i2b2-data-schema-changelog.xml,
+                                    </includes>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-dbmigration-from-eurekaclinical-user-service</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.eurekaclinical</groupId>
+                                            <artifactId>eurekaclinical-user-service</artifactId>
+                                            <version>${user-service-version}</version>
+                                            <type>war</type>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <includes>
+                                        WEB-INF/classes/dbmigration/changelog-master.xml
+                                    </includes>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-user-service-config</outputDirectory>
+                                </configuration>
+                            </execution>
                             <execution>
                                 <id>copy-sql-from-eurekaclinical-analytics-service</id>
                                 <phase>generate-resources</phase>
@@ -359,165 +281,184 @@
                                     <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
                                 </configuration>
                             </execution> 
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
                             <execution>
-                                <id>copy-sql-from-eurekaclinical-protempa-service-i2b2-data-schema</id>
-                                <phase>generate-resources</phase>
+                                <id>copy-context.xml</id>
+                                <phase>process-resources</phase>
                                 <goals>
-                                    <goal>unpack</goal>
+                                    <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>org.eurekaclinical</groupId>
-                                            <artifactId>eurekaclinical-protempa-service</artifactId>
-                                            <version>${eurekaclinical-protempa-service-version}</version>
-                                            <type>war</type>
-                                        </artifactItem>
-                                    </artifactItems>
-                                    <includes>WEB-INF/classes/tomcat-eureka-config/dbmigration/eureka-protempa-etl-changelog.xml</includes>
-                                    <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/tomcat-config</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources/tomcat-server-config</directory>
+                                            <filtering>true</filtering>
+                                            <includes>
+                                                <include>context.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>copy-sql-from-eurekaclinical-protempa-service-tomcat7-run-inserts-changelog</id>
-                                <phase>generate-resources</phase>
+                                <id>copy-cert</id>
+                                <phase>process-resources</phase>
                                 <goals>
-                                    <goal>unpack</goal>
+                                    <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>org.eurekaclinical</groupId>
-                                            <artifactId>eurekaclinical-protempa-service</artifactId>
-                                            <version>${eurekaclinical-protempa-service-version}</version>
-                                            <type>war</type>
-                                        </artifactItem>
-                                    </artifactItems>
-                                    <includes>WEB-INF/classes/tomcat-eureka-config/dbmigration/tomcat7-run-inserts-changelog.xml</includes>
-                                    <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/tomcat-config</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources/tomcat-server-config</directory>
+                                            <filtering>false</filtering>
+                                            <includes>
+                                                <include>localhost.keystore</include>
+                                                <include>localhost.truststore</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
                                 </configuration>
-                            </execution>    
-                           <execution>
-                                <id>copy-sql-from-eurekaclinical-protempa-service-1</id>
-                                <phase>generate-resources</phase>
+                            </execution>
+                            <execution>
+                                <id>copy-logging.properties-file</id>
+                                <phase>process-resources</phase>
                                 <goals>
-                                    <goal>unpack</goal>
+                                    <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>org.eurekaclinical</groupId>
-                                            <artifactId>eurekaclinical-protempa-service</artifactId>
-                                            <version>${eurekaclinical-protempa-service-version}</version>
-                                            <type>war</type>
-                                        </artifactItem>
-                                    </artifactItems>
-                                    <includes>WEB-INF/classes/tomcat-eureka-config/sql/eureka-i2b2-ksb-2-h2.sql</includes>
-                                    <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/eureka-config</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources</directory>
+                                            <includes>
+                                                <include>logging.properties</include>
+                                            </includes>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
                                 </configuration>
-                            </execution> 
+                            </execution>
+                            <execution>
+                                <id>copy-application.properties-file</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/eureka-config</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources/tomcat-eureka-config</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-eurekaclinical-protempa-service-changelogxml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service/dbmigration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources/tomcat-eureka-config/dbmigration</directory>
+                                            <includes>
+                                                <include>eureka-protempa-etl-changelog.xml</include>
+                                            </includes>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                        <resource>
+                                            <directory>${basedir}/src/main/resources/tomcat-eureka-config/dbmigration</directory>
+                                            <includes>
+                                                <include>tomcat7-run-inserts-changelog.xml</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>${project.build.directory}/eurekaclinical-protempa-service-config/WEB-INF/classes/dbmigration</directory>
+                                            <filtering>true</filtering>
+                                            <includes>
+                                                <include>changelog-master.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-eurekaclinical-analytics-service-changelogxml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-analytics-service/dbmigration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/eurekaclinical-analytics-service-config/WEB-INF/classes/dbmigration</directory>
+                                            <filtering>true</filtering>
+                                            <includes>
+                                                <include>changelog-master.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-eurekaclinical-user-service-changelogxml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-user-service/dbmigration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/eurekaclinical-user-service-config/WEB-INF/classes/dbmigration</directory>
+                                            <filtering>true</filtering>
+                                            <includes>
+                                                <include>changelog-master.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
                         </executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<executions>
-		                     <execution>
-								<id>copy-eurekaclinical-protempa-service-changelogxml</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config/WEB-INF/classes/dbmigration</outputDirectory>
-									<resources>
-										<resource>
-											<directory>${basedir}/target/eurekaclinical-protempa-service-config/WEB-INF/classes/tomcat-eureka-config/dbmigration</directory>
-											<filtering>true</filtering>
-										</resource>
-									</resources>
-								</configuration>
-							</execution> 
-							 <execution>
-								<id>copy-eurekaclinical-protempa-service-changelog-masterxml</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/classes/dbmigration</outputDirectory>
-									<resources>
-										<resource>
-											<directory>${basedir}/target/eurekaclinical-protempa-service-config/WEB-INF/classes/dbmigration</directory>
-											<filtering>true</filtering>
-											<includes>
-												<include>changelog-master.xml</include>
-											</includes>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-							<execution>
-								<id>copy-eurekaclinical-protempa-service-tomcat7-run-inserts-changelogxml</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/eureka-config/dbmigration</outputDirectory>
-									<resources>
-										<resource>
-											<directory>${basedir}/target/eurekaclinical-protempa-service-config/WEB-INF/classes/tomcat-eureka-config/dbmigration</directory>
-											<includes>
-												<include>tomcat7-run-inserts-changelog.xml</include>
-											</includes>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.liquibase</groupId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <executions>
-							<execution>
-								<id>liquibase-populate-user-service-db</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>update</goal>
-								</goals>
-								<configuration>
-									<expressionVars>
-										<property>
-											<name>eureka.superuser.email</name>
-											<value>no-reply@localhost</value>
-										</property>
-										<property>
-											<name>eureka.superuser.firstname</name>
-											<value>super</value>
-										</property>
-										<property>
-											<name>eureka.superuser.lastname</name>
-											<value>user</value>
-										</property>
-										<property>
-											<name>eureka.superuser.password</name>
-											<value>4656fd365a7b2a27efb753bca9b9cf1</value>
-										</property>
-										<property>
-											<name>eureka.superuser.username</name>
-											<value>superuser</value>
-										</property>
-										<property>
-											<name>eureka.superuser.fullname</name>
-											<value>Superuser</value>
-										</property>
-									</expressionVars>
-									<changeLogFile>${project.build.directory}/eurekaclinical-user-service/WEB-INF/classes/dbmigration/changelog-master.xml</changeLogFile>
-									<url>jdbc:h2:file:${project.build.directory}/eureka-db/eurekaclinical-user-service</url>
-								</configuration>
-							</execution>
+                            <execution>
+                                <id>liquibase-populate-user-service-db</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                                <configuration>
+                                    <changeLogFile>${project.build.directory}/eurekaclinical-user-service/dbmigration/changelog-master.xml</changeLogFile>
+                                    <url>jdbc:h2:file:${project.build.directory}/eureka-db/eurekaclinical-user-service</url>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>liquibase-populate-eurekaclinical-protempa-service-db</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                                <configuration>
+                                    <changeLogFile>${project.build.directory}/eurekaclinical-protempa-service/dbmigration/eureka-protempa-etl-changelog.xml</changeLogFile>
+                                    <url>jdbc:h2:file:${project.build.directory}/eureka-db/eurekaclinical-protempa-service</url>
+                                </configuration>
+                            </execution>
                             <execution>
                                 <id>liquibase-populate-eurekaclinical-analytics-service-db</id>
                                 <phase>process-resources</phase>
@@ -525,33 +466,7 @@
                                     <goal>update</goal>
                                 </goals>
                                 <configuration>
-	                                <expressionVars>
-										<property>
-											<name>eureka.superuser.email</name>
-											<value>no-reply@localhost</value>
-										</property>
-										<property>
-											<name>eureka.superuser.firstname</name>
-											<value>super</value>
-										</property>
-										<property>
-											<name>eureka.superuser.lastname</name>
-											<value>user</value>
-										</property>
-										<property>
-											<name>eureka.superuser.password</name>
-											<value>4656fd365a7b2a27efb753bca9b9cf1</value>
-										</property>
-										<property>
-											<name>eureka.superuser.username</name>
-											<value>superuser</value>
-										</property>
-										<property>
-											<name>eureka.superuser.fullname</name>
-											<value>Superuser</value>
-										</property>
-									</expressionVars>
-                                    <changeLogFile>${project.build.directory}/eurekaclinical-analytics-service-config/WEB-INF/classes/dbmigration/changelog-master.xml</changeLogFile>
+                                    <changeLogFile>${project.build.directory}/eurekaclinical-analytics-service/dbmigration/changelog-master.xml</changeLogFile>
                                     <url>jdbc:h2:file:${project.build.directory}/eureka-db/eureka-services</url>
                                 </configuration>
                             </execution>
@@ -562,30 +477,19 @@
                                     <goal>update</goal>
                                 </goals>
                                 <configuration>
-                                    <changeLogFile>${project.build.directory}/eurekaclinical-protempa-service-config/dbmigration/i2b2-data-schema-changelog.xml</changeLogFile>
+                                    <changeLogFile>${project.build.directory}/eurekaclinical-protempa-service/dbmigration/i2b2-data-schema-changelog.xml</changeLogFile>
                                     <url>jdbc:h2:file:${project.build.directory}/eureka-db/i2b2-data-schema</url>
                                 </configuration>
                             </execution>
-                           	<execution>
-                                <id>liquibase-populate-eureka-backend-db</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>update</goal>
-                                </goals>
-                                <configuration>
-                                    <changeLogFile>${project.build.directory}/eurekaclinical-protempa-service-config/WEB-INF/classes/dbmigration/eureka-protempa-etl-changelog.xml</changeLogFile>
-                                    <url>jdbc:h2:file:${project.build.directory}/eureka-db/eureka-backend</url>
-                                </configuration>
-                            </execution>
-                           </executions>
-					</plugin>
-					<plugin>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>sql-maven-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>create-eureka-i2b2-data-schema</id>
-                                <phase>process-classes</phase>
+                                <phase>process-resources</phase>
                                 <goals>
                                     <goal>execute</goal>
                                 </goals>
@@ -595,8 +499,8 @@
                                     <fileset>
                                         <basedir>${project.build.directory}</basedir>
                                         <includes>
-                                            <include>eurekaclinical-protempa-service-config/sql/i2b2_data_tables_1_7_h2.sql</include>
-                                            <include>eurekaclinical-protempa-service-config/sql/mock_stored_procedures_h2.sql</include>
+                                            <include>eurekaclinical-protempa-service/sql/i2b2_data_tables_1_7_h2.sql</include>
+                                            <include>eurekaclinical-protempa-service/sql/mock_stored_procedures_h2.sql</include>
                                         </includes>
                                     </fileset>
                                     <sqlCommand />
@@ -604,22 +508,9 @@
                             </execution>
                         </executions>
                     </plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<systemPropertyVariables>
-								<eureka.config.dir>${project.build.directory}/test-classes/eureka-config/eureka</eureka.config.dir>
-							</systemPropertyVariables>
-							<workingDirectory>${project.build.directory}</workingDirectory>
-
-						</configuration>
-					</plugin>
-
-				</plugins>
-			</build>
-
-			<dependencies>
+                </plugins>
+            </build>
+            <dependencies>
                 <dependency>
                     <groupId>org.eurekaclinical</groupId>
                     <artifactId>eurekaclinical-analytics-service</artifactId>
@@ -627,7 +518,7 @@
                     <type>war</type>
                     <scope>runtime</scope>
                 </dependency>
-				<dependency>
+                <dependency>
                     <groupId>org.eurekaclinical</groupId>
                     <artifactId>eurekaclinical-protempa-service</artifactId>
                     <version>${eurekaclinical-protempa-service-version}</version>
@@ -635,66 +526,66 @@
                     <scope>runtime</scope>
                 </dependency>
                 <dependency>
-                     <groupId>org.eurekaclinical</groupId>
-                     <artifactId>eurekaclinical-ontology</artifactId>
-                     <version>${eurekaclinical-ontology-version}</version> 
-                     <scope>runtime</scope>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-ontology</artifactId>
+                    <version>${eurekaclinical-ontology-version}</version> 
+                    <scope>runtime</scope>
                 </dependency>
                 <dependency>
-                   <groupId>org.eurekaclinical</groupId>
-                   <artifactId>aiw-i2b2-etl</artifactId>
-                   <version>${aiw-i2b2-etl-version}</version>
-                   <scope>runtime</scope>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>aiw-i2b2-etl</artifactId>
+                    <version>${aiw-i2b2-etl-version}</version>
+                    <scope>runtime</scope>
                 </dependency>
-				<dependency>
-					<groupId>org.eurekaclinical</groupId>
-					<artifactId>cas-mock</artifactId>
-					<version>${cas-mock-version}</version>
-					<type>war</type>
-					<scope>runtime</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.eurekaclinical</groupId>
-					<artifactId>eurekaclinical-user-service</artifactId>
-					<version>${user-service-version}</version>
-					<type>war</type>
-					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-	</profiles>
+                <dependency>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>cas-mock</artifactId>
+                    <version>${cas-mock-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-user-service</artifactId>
+                    <version>${user-service-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.jasig.cas.client</groupId>
-			<artifactId>cas-client-core</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eurekaclinical</groupId>
-			<artifactId>protempa-framework</artifactId>
-			<version>4.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eurekaclinical</groupId>
-			<artifactId>eureka-client</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eurekaclinical</groupId>
-			<artifactId>eurekaclinical-user-client</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eurekaclinical</groupId>
-			<artifactId>eurekaclinical-registry-client</artifactId>
-			<version>1.0</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>protempa-framework</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eureka-client</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eurekaclinical-user-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eurekaclinical-registry-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
 
