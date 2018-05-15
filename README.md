@@ -2,20 +2,12 @@
 [Georgia Clinical and Translational Science Alliance (Georgia CTSA)](http://www.georgiactsa.org), [Emory University](http://www.emory.edu), Atlanta, GA
 
 ## What does it do?
-It provides an angular-based web client for interacting with the Eureka! system. It also implements a proxy servlet and router for web clients to access the web services provided by `eureka-services` and `eureka-protempa-etl`.
+It also implements a proxy servlet and router for web clients to access the web services provided by `eurekaclinical-analytics-service` and `eurekaclinical-protempa-service`.
 
-## Version 3.0 development series
+## Version 1.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp)
 
-Version 3 will finish the "angularization" of the web client.
-
-## Version history
-### Version 2.5.2
-As compared with version 1, we have partially angularized the application. The actual functionality is unchanged.
-
-### Version 1.9
-Version 1.9 includes an update to the UI, now using Bootstrap 3, 
-to make the application more usable on mobile devices.  
+The version 1.0 series is a refactoring of the eureka project's eureka-webapp module. The functionality is the same as in the last release of eureka-webapp.
 
 ## Build requirements
 * [Oracle Java JDK 8](http://www.oracle.com/technetwork/java/javase/overview/index.html)
@@ -32,13 +24,26 @@ to make the application more usable on mobile devices.
   * The [cas-server](https://github.com/eurekaclinical/cas) war
 
 ## Proxied REST APIs
-See the parent project's [README.md](https://github.com/eurekaclinical/eureka/blob/master/README.md).
+You can call all of [eureka](https://github.com/eurekaclinical/eurekaclinical-user-service)'s REST APIs through a proxy provided by `eureka-webapp`. The proxy will forward selected calls to `eureka-protempa-etl` and [eurekaclinical-user-service](https://github.com/eurekaclinical/eurekaclinical-user-service). All other valid URLs will be forwarded to `eureka-services`. Replace `/protected/api` with `/proxy-resource` in your URLs. See the READMEs for each of these service projects for REST endpoint documentation.
+
+### Proxy calls that are forwarded to [eurekaclinical-protempa-service](https://github.com/eurekaclinical/eurekaclinical-protempa-service)
+* `/proxy-resource/file`
+* `/proxy-resource/output`
+
+### Proxy calls that are forwarded to [eurekaclinical-user-service](https://github.com/eurekaclinical/eurekaclinical-user-service)
+* `/proxy-resource/users`
+* `/proxy-resource/roles`
+
+### Proxy calls that are forwarded to [eurekaclinical-analytics-service](https://github.com/eurekaclinical/eurekaclinical-analytics-service)
+Everything else
 
 ## Building it
-See the parent project's [README.md](https://github.com/eurekaclinical/eureka/blob/master/README.md).
+The project uses the maven build tool. 
+
+Typically, you build it by invoking `mvn clean install` at the command line. For simple file changes, not additions or deletions, you can usually use `mvn install`. See https://github.com/eurekaclinical/dev-wiki/wiki/Building-Eureka!-Clinical-projects for more details.
 
 ## Performing system tests
-See the parent project's [README.md](https://github.com/eurekaclinical/eureka/blob/master/README.md).
+You can run this project in an embedded tomcat by executing `mvn process-resources cargo:run -Ptomcat` after you have built it. You also must be running the eurekaclinical-analytics-webclient project. The webapp will then be accessible in your web browser at https://localhost:8000/eurekaclinical-analytics-webapp/. Your username will be `superuser`.
 
 ## Installation
 ### Configuration
