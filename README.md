@@ -2,7 +2,7 @@
 [Georgia Clinical and Translational Science Alliance (Georgia CTSA)](http://www.georgiactsa.org), [Emory University](http://www.emory.edu), Atlanta, GA
 
 ## What does it do?
-It also implements a proxy servlet and router for web clients to access the web services provided by `eurekaclinical-analytics-service` and `eurekaclinical-protempa-service`.
+It implements a proxy servlet and router for web clients to access the web services provided by `eurekaclinical-analytics-service`, `eurekaclinical-protempa-service`, and `eurekaclinical-user-service`.
 
 ## Version 1.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp)
