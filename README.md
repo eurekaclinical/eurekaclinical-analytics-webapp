@@ -56,10 +56,10 @@ This webapp is configured using a properties file located at `/etc/eureka/applic
 * `eureka.support.uri`: URI link for contacting support. Could be http, https, or mailto.
 * `eureka.support.uri.name`: Display name of the URI link for contacting support.
 * `eureka.webapp.callbackserver`: URL of the server running the webapp; default is https://localhost:8443.
-* `eureka.webapp.url`: the URL of the webapp; default is https://localhost:8443/eureka-webapp.
+* `eureka.webapp.url`: the URL of the webapp; default is https://localhost:8443/eurekaclinical-analytics-webapp.
 * `eureka.webapp.ephiprohibited`: true or false depending on whether to display that managing ePHI is prohibited; default is true.
 * `eureka.webapp.demomode`: true or false depending on whether to act like a demonstration; default is false.
-* `eureka.services.url`: URL of the server running the services layer; default is https://localhost:8443/eureka-services.
+* `eureka.services.url`: URL of the server running the services layer; default is https://localhost:8443/eurekaclinical-analytics-service.
 
 A Tomcat restart is required to detect any changes to the configuration file.
 
