@@ -145,6 +145,8 @@ public class ServicesClient extends EurekaClient {
 	}
 
 	public URI submitJob(JobSpec inUpload) throws ClientException {
+		System.out.print("\n==================Miao1==================\n");
+		System.out.print("\n==================Got job submission1: "+inUpload);            
 		final String path = "/api/protected/jobs";
 		URI jobUrl = doPostCreate(path, inUpload);
 		return jobUrl;

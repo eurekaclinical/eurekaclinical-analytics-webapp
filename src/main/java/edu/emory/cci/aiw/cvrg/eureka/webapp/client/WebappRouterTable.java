@@ -41,6 +41,7 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.client;
  */
 
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EtlClient;
+import org.eurekaclinical.phenotype.client.PhenotypeClient;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.ServicesClient;
 import javax.inject.Inject;
 import org.eurekaclinical.common.comm.clients.Route;
@@ -59,13 +60,20 @@ public class WebappRouterTable implements RouterTable {
 	private final ServicesClient servicesClient;
 	private final EtlClient etlClient;
 	private final EurekaClinicalRegistryClient registryClient;
+        private final PhenotypeClient phenotypeClient;
 
     @Inject
-    public WebappRouterTable(ServicesClient inServices, EurekaClinicalUserClient inUserClient, EtlClient inEtlClient, EurekaClinicalRegistryClient inRegistryClient) {
-        this.servicesClient = inServices;
+    public WebappRouterTable(
+            ServicesClient inServices, 
+            EurekaClinicalUserClient inUserClient, 
+            EtlClient inEtlClient, 
+            EurekaClinicalRegistryClient inRegistryClient,
+            PhenotypeClient inPhenotypeClient) {
+		this.servicesClient = inServices;
 		this.userClient = inUserClient;
 		this.etlClient = inEtlClient;
 		this.registryClient = inRegistryClient;
+		this.phenotypeClient = inPhenotypeClient;
     }
 
 	@Override
@@ -77,6 +85,7 @@ public class WebappRouterTable implements RouterTable {
 			new Route("/file", "/api/protected/file", this.etlClient),
 			new Route("/output", "/api/protected/output", this.etlClient),
 			new Route("/components", "/api/protected/components", this.registryClient),
+			new Route("/phenotypes", "/api/protected/phenotypes", this.phenotypeClient),
 			new Route("/", "/api/protected/", this.servicesClient)
 		};
 	}

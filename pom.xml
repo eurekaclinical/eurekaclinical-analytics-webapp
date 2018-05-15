@@ -25,8 +25,9 @@
         <aiw-i2b2-etl-version>3.0</aiw-i2b2-etl-version>
         <user-service-version>2.0-Alpha-2</user-service-version>
         <cas-mock-version>2.1-Beta-1</cas-mock-version>
-        <eurekaclinical-analytics-service-version>1.0-Alpha-1</eurekaclinical-analytics-service-version>
-        <eurekaclinical-protempa-service-version>1.0-Alpha-2</eurekaclinical-protempa-service-version>
+        <eurekaclinical-analytics-service-version>1.0-Alpha-3-SNAPSHOT</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>1.0-Alpha-3-SNAPSHOT</eurekaclinical-protempa-service-version>
+        <eurekaclinical-phenotype-service-version>1.0-SNAPSHOT</eurekaclinical-phenotype-service-version>
     </properties>
 	
     <scm>
@@ -162,6 +163,11 @@
                                     <artifactId>eurekaclinical-protempa-service</artifactId>
                                     <type>war</type>
                                 </deployable>
+                                <deployable>
+                                    <groupId>org.eurekaclinical</groupId>
+                                    <artifactId>eurekaclinical-phenotype-service</artifactId>
+                                    <type>war</type>
+                                </deployable>                                
                                 <deployable>
                                     <groupId>org.eurekaclinical</groupId>
                                     <artifactId>eurekaclinical-user-service</artifactId> 
@@ -527,6 +533,13 @@
                 </dependency>
                 <dependency>
                     <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-phenotype-service</artifactId>
+                    <version>${eurekaclinical-phenotype-service-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>                
+                <dependency>
+                    <groupId>org.eurekaclinical</groupId>
                     <artifactId>eurekaclinical-ontology</artifactId>
                     <version>${eurekaclinical-ontology-version}</version> 
                     <scope>runtime</scope>
@@ -574,8 +587,13 @@
         <dependency>
             <groupId>org.eurekaclinical</groupId>
             <artifactId>eureka-client</artifactId>
-            <version>3.0</version>
+            <version>3.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eurekaclinical-phenotype-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>        
         <dependency>
             <groupId>org.eurekaclinical</groupId>
             <artifactId>eurekaclinical-user-client</artifactId>
