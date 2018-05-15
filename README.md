@@ -25,7 +25,8 @@ The version 1.0 series is a refactoring of the eureka project's eureka-webapp mo
 
 ## Proxied REST APIs
 You can call all of [eureka](https://github.com/eurekaclinical/eurekaclinical-user-service)'s REST APIs through a proxy provided by `eureka-webapp`. The proxy will forward selected calls to `eureka-protempa-etl` and [eurekaclinical-user-service](https://github.com/eurekaclinical/eurekaclinical-user-service). All other valid URLs will be forwarded to `eureka-services`. Replace `/protected/api` with `/proxy-resource` in your URLs. See the READMEs for each of these service projects for REST endpoint documentation.
-### Proxy calls that are forwarded to `eureka-protempa-etl`
+
+### Proxy calls that are forwarded to [eurekaclinical-protempa-service](https://github.com/eurekaclinical/eurekaclinical-protempa-service)
 * `/proxy-resource/file`
 * `/proxy-resource/output`
 
@@ -33,7 +34,7 @@ You can call all of [eureka](https://github.com/eurekaclinical/eurekaclinical-us
 * `/proxy-resource/users`
 * `/proxy-resource/roles`
 
-### Proxy calls that are forwarded to `eureka-services`
+### Proxy calls that are forwarded to [eurekaclinical-analytics-service](https://github.com/eurekaclinical/eurekaclinical-analytics-service)
 Everything else
 
 ## Building it
