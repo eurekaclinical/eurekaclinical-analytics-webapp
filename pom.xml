@@ -165,8 +165,8 @@
                                 </deployable>
                                 <deployable>
                                     <groupId>org.eurekaclinical</groupId>
-                                    <artifactId>eurekaclinical-phenotype-service</artifactId>
-                                    <type>war</type>
+                                    <artifactId>eurekaclinical-phenotype-service</artifactId> 
+                                    <type>war</type> 
                                 </deployable>                                
                                 <deployable>
                                     <groupId>org.eurekaclinical</groupId>
@@ -285,6 +285,25 @@
                                     </artifactItems>
                                     <includes>WEB-INF/classes/dbmigration/changelog-master.xml</includes>
                                     <outputDirectory>${project.build.directory}/eurekaclinical-protempa-service-config</outputDirectory>
+                                </configuration>
+                            </execution> 
+                            <execution>
+                                <id>copy-sql-from-eurekaclinical-phenotype-service</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.eurekaclinical</groupId>
+                                            <artifactId>eurekaclinical-phenotype-service</artifactId>
+                                            <version>${eurekaclinical-phenotype-service-version}</version>
+                                            <type>war</type>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <includes>WEB-INF/classes/dbmigration/changelog-master.xml</includes>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-phenotype-service-config</outputDirectory>
                                 </configuration>
                             </execution> 
                         </executions>
@@ -437,6 +456,29 @@
                                     </resources>
                                 </configuration>
                             </execution>
+                            
+                            <execution>
+                                <id>copy-eurekaclinical-phenotype-service-changelogxml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/eurekaclinical-phenotype-service/dbmigration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/eurekaclinical-phenotype-service-config/WEB-INF/classes/dbmigration</directory>
+                                            <filtering>true</filtering>
+                                            <includes>
+                                                <include>changelog-master.xml</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            
+                            
+                            
                         </executions>
                     </plugin>
                     <plugin>
@@ -487,6 +529,17 @@
                                     <url>jdbc:h2:file:${project.build.directory}/eureka-db/i2b2-data-schema</url>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>liquibase-populate-eurekaclinical-phenotype-service-db</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                                <configuration>
+                                    <changeLogFile>${project.build.directory}/eurekaclinical-phenotype-service/dbmigration/changelog-master.xml</changeLogFile>
+                                    <url>jdbc:h2:file:${project.build.directory}/eureka-db/eurekaclinical-phenotype-service</url>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                     <plugin>
@@ -533,13 +586,6 @@
                 </dependency>
                 <dependency>
                     <groupId>org.eurekaclinical</groupId>
-                    <artifactId>eurekaclinical-phenotype-service</artifactId>
-                    <version>${eurekaclinical-phenotype-service-version}</version>
-                    <type>war</type>
-                    <scope>runtime</scope>
-                </dependency>                
-                <dependency>
-                    <groupId>org.eurekaclinical</groupId>
                     <artifactId>eurekaclinical-ontology</artifactId>
                     <version>${eurekaclinical-ontology-version}</version> 
                     <scope>runtime</scope>
@@ -557,6 +603,13 @@
                     <type>war</type>
                     <scope>runtime</scope>
                 </dependency>
+                <dependency>
+                    <groupId>org.eurekaclinical</groupId>
+                    <artifactId>eurekaclinical-phenotype-service</artifactId>
+                    <version>${eurekaclinical-phenotype-service-version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>                
                 <dependency>
                     <groupId>org.eurekaclinical</groupId>
                     <artifactId>eurekaclinical-user-service</artifactId>
@@ -593,7 +646,7 @@
             <groupId>org.eurekaclinical</groupId>
             <artifactId>eurekaclinical-phenotype-client</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>        
+        </dependency>       
         <dependency>
             <groupId>org.eurekaclinical</groupId>
             <artifactId>eurekaclinical-user-client</artifactId>
@@ -606,4 +659,3 @@
         </dependency>
     </dependencies>
 </project>
-

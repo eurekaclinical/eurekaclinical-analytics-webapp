@@ -46,8 +46,8 @@ import com.google.inject.servlet.SessionScoped;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EtlClient;
 
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.ServicesClient;
-import org.eurekaclinical.common.comm.clients.AuthorizingEurekaClinicalClient;
 import org.eurekaclinical.common.comm.clients.RouterTable;
+import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 import org.eurekaclinical.user.client.EurekaClinicalUserClient;
@@ -60,16 +60,23 @@ class AppModule extends AbstractModule {
 
 	private final WebappProperties webappProperties;
 	private final EurekaClinicalUserClientProvider userClientProvider;
+	private final EurekaClinicalPhenotypeClientProvider phenotypeClientProvider;        
 	private final EtlClientProvider etlClientProvider;
 	private final ServicesClientProvider servicesClientProvider;
 	private final EurekaClinicalRegistryClientProvider registryClientProvider;
 
-	AppModule(WebappProperties webappProperties, ServicesClientProvider inServicesClientProvider, EtlClientProvider inEtlClientProvider, EurekaClinicalUserClientProvider inUserClient, EurekaClinicalRegistryClientProvider inRegistryClient) {
+	AppModule(WebappProperties webappProperties, 
+		EurekaClinicalUserClientProvider inUserClient,                 
+		EurekaClinicalPhenotypeClientProvider inPhenotypeClientProvider,                
+		EtlClientProvider inEtlClientProvider, 
+		ServicesClientProvider inServicesClientProvider,                 
+		EurekaClinicalRegistryClientProvider inRegistryClient) {
 		assert webappProperties != null : "webappProperties cannot be null";
 		this.webappProperties = webappProperties;
 		this.userClientProvider = inUserClient;
+		this.phenotypeClientProvider = inPhenotypeClientProvider;
+		this.etlClientProvider = inEtlClientProvider;                
 		this.servicesClientProvider = inServicesClientProvider;
-		this.etlClientProvider = inEtlClientProvider;
 		this.registryClientProvider = inRegistryClient;
 	}
 
@@ -78,9 +85,10 @@ class AppModule extends AbstractModule {
 		bind(RouterTable.class).to(WebappRouterTable.class).in(SessionScoped.class);
 		bind(WebappProperties.class).toInstance(this.webappProperties);
 		bind(CasEurekaClinicalProperties.class).toInstance(this.webappProperties);
-		bind(ServicesClient.class).toProvider(this.servicesClientProvider).in(SessionScoped.class);
-		bind(EtlClient.class).toProvider(this.etlClientProvider).in(SessionScoped.class);
 		bind(EurekaClinicalUserClient.class).toProvider(this.userClientProvider).in(SessionScoped.class);
+		bind(EurekaClinicalPhenotypeClient.class).toProvider(this.phenotypeClientProvider).in(SessionScoped.class);                
+		bind(EtlClient.class).toProvider(this.etlClientProvider).in(SessionScoped.class);   
+		bind(ServicesClient.class).toProvider(this.servicesClientProvider).in(SessionScoped.class);                
 		bind(EurekaClinicalRegistryClient.class).toProvider(this.registryClientProvider).in(SessionScoped.class);
 	}
 

@@ -41,7 +41,7 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.client;
  */
 
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EtlClient;
-import org.eurekaclinical.phenotype.client.PhenotypeClient;
+import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.ServicesClient;
 import javax.inject.Inject;
 import org.eurekaclinical.common.comm.clients.Route;
@@ -60,7 +60,7 @@ public class WebappRouterTable implements RouterTable {
 	private final ServicesClient servicesClient;
 	private final EtlClient etlClient;
 	private final EurekaClinicalRegistryClient registryClient;
-        private final PhenotypeClient phenotypeClient;
+        private final EurekaClinicalPhenotypeClient phenotypeClient;
 
     @Inject
     public WebappRouterTable(
@@ -68,7 +68,7 @@ public class WebappRouterTable implements RouterTable {
             EurekaClinicalUserClient inUserClient, 
             EtlClient inEtlClient, 
             EurekaClinicalRegistryClient inRegistryClient,
-            PhenotypeClient inPhenotypeClient) {
+            EurekaClinicalPhenotypeClient inPhenotypeClient) {
 		this.servicesClient = inServices;
 		this.userClient = inUserClient;
 		this.etlClient = inEtlClient;
@@ -86,6 +86,12 @@ public class WebappRouterTable implements RouterTable {
 			new Route("/output", "/api/protected/output", this.etlClient),
 			new Route("/components", "/api/protected/components", this.registryClient),
 			new Route("/phenotypes", "/api/protected/phenotypes", this.phenotypeClient),
+                        new Route("/frequencytypes", "/api/protected/frequencytypes", this.phenotypeClient),
+                        new Route("/thresholdsops", "/api/protected/thresholdsops", this.phenotypeClient),
+                        new Route("/relationops", "/api/protected/relationops", this.phenotypeClient),
+                        new Route("/timeunits", "/api/protected/timeunits", this.phenotypeClient),
+                        new Route("/valuecomps", "/api/protected/valuecomps", this.phenotypeClient),
+
 			new Route("/", "/api/protected/", this.servicesClient)
 		};
 	}

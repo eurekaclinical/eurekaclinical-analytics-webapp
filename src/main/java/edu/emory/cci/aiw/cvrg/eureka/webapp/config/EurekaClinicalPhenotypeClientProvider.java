@@ -4,7 +4,7 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
  * #%L
  * Eureka WebApp
  * %%
- * Copyright (C) 2012 - 2016 Emory University
+ * Copyright (C) 2012 - 2017 Emory University
  * %%
  * This program is dual licensed under the Apache 2 and GPLv3 licenses.
  * 
@@ -40,14 +40,24 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
  * #L%
  */
 
+import com.google.inject.Provider;
+import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
+
 /**
  *
  * @author Andrew Post
  */
-public final class RequestAttributes {
-	public static final String USER = "user";
-	public static final String USER_IS_ACTIVATED = "userIsActivated";
-	public static final String User_Webapp_URL = "userWebappURL";
-	public static final String User_Service_URL = "userServiceURL"; 
-	public static final String Phenotype_Service_URL = "phenotypeServiceURL"; 
+public class EurekaClinicalPhenotypeClientProvider implements Provider<EurekaClinicalPhenotypeClient> {
+
+	private final String phenotypeServiceUrl;
+
+	public EurekaClinicalPhenotypeClientProvider(String inPhenotypeServiceUrl) {
+		this.phenotypeServiceUrl = inPhenotypeServiceUrl;
+	}
+	
+	@Override
+	public EurekaClinicalPhenotypeClient get() {
+		return new EurekaClinicalPhenotypeClient(this.phenotypeServiceUrl);
+	}
+
 }

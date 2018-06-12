@@ -85,6 +85,10 @@ public class WebappProperties extends CasEurekaClinicalProperties {
 		return this.getValue("eurekaclinical.userservice.url");
 	}
 
+	public String getPhenotypeServiceUrl() {
+		return this.getValue("eurekaclinical.phenotype.service.url");
+	}
+        
 	public String getRegistryServiceUrl() {
 		return getValue("eurekaclinical.registryservice.url");
 	}
