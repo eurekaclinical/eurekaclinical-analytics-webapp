@@ -4,9 +4,9 @@
 ## What does it do?
 It implements a proxy servlet and router for web clients to access the web services provided by `eurekaclinical-analytics-service`, `eurekaclinical-protempa-service`, and `eurekaclinical-user-service`.
 
-## Version 1.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp)
 
+## Version 1.0
 The version 1.0 series is a refactoring of the eureka project's eureka-webapp module. The functionality is the same as in the last release of eureka-webapp.
 
 ## Build requirements
