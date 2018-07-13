@@ -77,13 +77,14 @@ public class WebappRouterTable implements RouterTable {
     }
 
 	@Override
-	public Route[] load() throws RouterTableLoadException {
+	public Route[] load() throws RouterTableLoadException {            
 		return new Route[]{
 			new Route("/users", "/api/protected/users", this.userClient),
 			new Route("/roles", "/api/protected/roles", this.userClient),
 			new Route("/appproperties", "/api/appproperties", this.servicesClient),
 			new Route("/file", "/api/protected/file", this.etlClient),
 			new Route("/output", "/api/protected/output", this.etlClient),
+                        new Route("/jobs", "/api/protected/jobs", this.etlClient),
 			new Route("/components", "/api/protected/components", this.registryClient),
 			new Route("/phenotypes", "/api/protected/phenotypes", this.phenotypeClient),
                         new Route("/frequencytypes", "/api/protected/frequencytypes", this.phenotypeClient),
@@ -93,6 +94,7 @@ public class WebappRouterTable implements RouterTable {
                         new Route("/valuecomps", "/api/protected/valuecomps", this.phenotypeClient),
 
 			new Route("/", "/api/protected/", this.servicesClient)
+                        
 		};
 	}
 	

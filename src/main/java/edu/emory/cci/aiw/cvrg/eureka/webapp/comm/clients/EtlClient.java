@@ -55,7 +55,6 @@ import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.EtlPatientSetSenderDestination;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.EtlTabularFileDestination;
 import org.eurekaclinical.eureka.client.comm.Job;
 import org.eurekaclinical.eureka.client.comm.JobFilter;
-import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.JobRequest;
 import org.eurekaclinical.eureka.client.comm.SourceConfig;
 import org.eurekaclinical.eureka.client.comm.Statistics;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.ValidationRequest;
@@ -67,6 +66,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.comm.clients.ClientException;
+import org.eurekaclinical.eureka.client.comm.JobSpec;
 import org.protempa.PropositionDefinition;
 
 /**
@@ -204,9 +204,9 @@ public class EtlClient extends EurekaClient {
 		doDelete(path);
 	}
 
-	public Long submitJob(JobRequest inJobRequest) throws ClientException {
+	public Long submitJob(JobSpec inJobSpec) throws ClientException {
 		final String path = "/api/protected/jobs";
-		URI jobUri = doPostCreate(path, inJobRequest);
+		URI jobUri = doPostCreate(path, inJobSpec);
 		return extractId(jobUri);
 	}
 
