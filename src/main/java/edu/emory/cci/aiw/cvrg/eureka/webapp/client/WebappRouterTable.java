@@ -39,13 +39,12 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.client;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-
-import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EtlClient;
-import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.ServicesClient;
 import javax.inject.Inject;
 import org.eurekaclinical.common.comm.clients.Route;
 import org.eurekaclinical.common.comm.clients.RouterTable;
 import org.eurekaclinical.common.comm.clients.RouterTableLoadException;
+import org.eurekaclinical.eureka.client.EurekaClient;
+import org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 import org.eurekaclinical.user.client.EurekaClinicalUserClient;
 
@@ -54,31 +53,31 @@ import org.eurekaclinical.user.client.EurekaClinicalUserClient;
  * @author Andrew Post
  */
 public class WebappRouterTable implements RouterTable {
-	
-	private final EurekaClinicalUserClient userClient;
-	private final ServicesClient servicesClient;
-	private final EtlClient etlClient;
-	private final EurekaClinicalRegistryClient registryClient;
+
+    private final EurekaClinicalUserClient userClient;
+    private final EurekaClient servicesClient;
+    private final EurekaClinicalProtempaClient etlClient;
+    private final EurekaClinicalRegistryClient registryClient;
 
     @Inject
-    public WebappRouterTable(ServicesClient inServices, EurekaClinicalUserClient inUserClient, EtlClient inEtlClient, EurekaClinicalRegistryClient inRegistryClient) {
+    public WebappRouterTable(EurekaClient inServices, EurekaClinicalUserClient inUserClient, EurekaClinicalProtempaClient inEtlClient, EurekaClinicalRegistryClient inRegistryClient) {
         this.servicesClient = inServices;
-		this.userClient = inUserClient;
-		this.etlClient = inEtlClient;
-		this.registryClient = inRegistryClient;
+        this.userClient = inUserClient;
+        this.etlClient = inEtlClient;
+        this.registryClient = inRegistryClient;
     }
 
-	@Override
-	public Route[] load() throws RouterTableLoadException {
-		return new Route[]{
-			new Route("/users", "/api/protected/users", this.userClient),
-			new Route("/roles", "/api/protected/roles", this.userClient),
-			new Route("/appproperties", "/api/appproperties", this.servicesClient),
-			new Route("/file", "/api/protected/file", this.etlClient),
-			new Route("/output", "/api/protected/output", this.etlClient),
-			new Route("/components", "/api/protected/components", this.registryClient),
-			new Route("/", "/api/protected/", this.servicesClient)
-		};
-	}
-	
+    @Override
+    public Route[] load() throws RouterTableLoadException {
+        return new Route[]{
+            new Route("/users", "/api/protected/users", this.userClient),
+            new Route("/roles", "/api/protected/roles", this.userClient),
+            new Route("/appproperties", "/api/appproperties", this.servicesClient),
+            new Route("/file", "/api/protected/file", this.etlClient),
+            new Route("/output", "/api/protected/output", this.etlClient),
+            new Route("/components", "/api/protected/components", this.registryClient),
+            new Route("/", "/api/protected/", this.servicesClient)
+        };
+    }
+
 }

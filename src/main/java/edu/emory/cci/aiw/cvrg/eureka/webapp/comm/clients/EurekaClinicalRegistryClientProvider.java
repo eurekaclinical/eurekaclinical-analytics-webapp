@@ -1,8 +1,10 @@
-/*
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
+
+/*-
  * #%L
- * Eureka Common
+ * Eureka WebApp
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2012 - 2017 Emory University
  * %%
  * This program is dual licensed under the Apache 2 and GPLv3 licenses.
  * 
@@ -37,15 +39,25 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-package edu.emory.cci.aiw.cvrg.eureka.webapp.json;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.google.inject.Provider;
+import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 
-public abstract class ReferenceMixin {
-    @JsonCreator
-    public ReferenceMixin(@JsonProperty("id") String id,
-			@JsonProperty("displayName") String displayName,
-            @JsonProperty("propositionIds") String[] propositionIds) {
-    }
+/**
+ *
+ * @author Andrew Post
+ */
+public class EurekaClinicalRegistryClientProvider implements Provider<EurekaClinicalRegistryClient> {
+
+	private final String registryServiceUrl;
+
+	public EurekaClinicalRegistryClientProvider(String inRegistryServiceUrl) {
+		this.registryServiceUrl = inRegistryServiceUrl;
+	}
+	
+	@Override
+	public EurekaClinicalRegistryClient get() {
+		return new EurekaClinicalRegistryClient(this.registryServiceUrl);
+	}
+
 }

@@ -1,10 +1,10 @@
-package edu.emory.cci.aiw.cvrg.eureka.webapp.entity;
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
 
-/*
+/*-
  * #%L
- * Eureka Common
+ * Eureka WebApp
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2012 - 2017 Emory University
  * %%
  * This program is dual licensed under the Apache 2 and GPLv3 licenses.
  * 
@@ -40,17 +40,24 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.entity;
  * #L%
  */
 
+import com.google.inject.Provider;
+import org.eurekaclinical.user.client.EurekaClinicalUserClient;
+
 /**
  *
  * @author Andrew Post
  */
-public interface ConfigEntity {
+public class EurekaClinicalUserClientProvider implements Provider<EurekaClinicalUserClient> {
 
-	public abstract String getName();
+	private final String userServiceUrl;
+
+	public EurekaClinicalUserClientProvider(String inUserServiceUrl) {
+		this.userServiceUrl = inUserServiceUrl;
+	}
 	
-	public abstract void setName(String name);
-	
-	public abstract AuthorizedUserEntity getOwner();
-	
-	public abstract void setOwner(AuthorizedUserEntity owner);
+	@Override
+	public EurekaClinicalUserClient get() {
+		return new EurekaClinicalUserClient(this.userServiceUrl);
+	}
+
 }

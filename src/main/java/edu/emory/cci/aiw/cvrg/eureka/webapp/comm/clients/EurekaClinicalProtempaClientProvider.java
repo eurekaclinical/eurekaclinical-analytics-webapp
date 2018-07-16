@@ -1,8 +1,13 @@
-/*
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
+
+import com.google.inject.Provider;
+import org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient;
+
+/*-
  * #%L
- * Eureka Common
+ * Eureka WebApp
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2012 - 2017 Emory University
  * %%
  * This program is dual licensed under the Apache 2 and GPLv3 licenses.
  * 
@@ -37,21 +42,21 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-package edu.emory.cci.aiw.cvrg.eureka.webapp.json;
+/**
+ *
+ * @author Andrew Post
+ */
+public class EurekaClinicalProtempaClientProvider implements Provider<EurekaClinicalProtempaClient> {
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.protempa.proposition.value.AbsoluteTimeUnit;
-import org.protempa.proposition.value.Unit;
+    private final String etlUrl;
 
-public abstract class AbsoluteTimeUnitMixin {
-    
-    @JsonCreator
-    public static AbsoluteTimeUnit nameToUnit(@JsonProperty("name") String name) {
-        return null;
+    public EurekaClinicalProtempaClientProvider(String inEtlUrl) {
+        this.etlUrl = inEtlUrl;
     }
-    
-    @JsonIgnore public abstract int getCalendarUnits();
-    @JsonIgnore public abstract Unit getUnits();
+
+    @Override
+    public EurekaClinicalProtempaClient get() {
+        return new EurekaClinicalProtempaClient(this.etlUrl);
+    }
+
 }
