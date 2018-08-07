@@ -23,10 +23,10 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <commons-codec-version>1.4</commons-codec-version>
         <eurekaclinical-ontology-version>2.0.2</eurekaclinical-ontology-version>
-        <aiw-i2b2-etl-version>4.0-Beta-7</aiw-i2b2-etl-version>
+        <aiw-i2b2-etl-version>4.0-Beta-8</aiw-i2b2-etl-version>
         <cas-mock-version>2.1</cas-mock-version>
-        <eurekaclinical-analytics-service-version>1.1-Beta-9</eurekaclinical-analytics-service-version>
-        <eurekaclinical-protempa-service-version>1.1-Beta-27</eurekaclinical-protempa-service-version>
+        <eurekaclinical-analytics-service-version>1.1-Beta-10</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>1.1-Beta-28</eurekaclinical-protempa-service-version>
         <eurekaclinical-protempa-client-version>1.0</eurekaclinical-protempa-client-version>
         <eurekaclinical-user-client-version>1.1</eurekaclinical-user-client-version>
         <eurekaclinical-user-service-version>2.0</eurekaclinical-user-service-version>
