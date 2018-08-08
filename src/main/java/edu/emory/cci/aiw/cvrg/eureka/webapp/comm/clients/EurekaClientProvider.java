@@ -1,8 +1,13 @@
-/*
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
+
+import com.google.inject.Provider;
+import org.eurekaclinical.eureka.client.EurekaClient;
+
+/*-
  * #%L
- * Eureka Common
+ * Eureka WebApp
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2012 - 2017 Emory University
  * %%
  * This program is dual licensed under the Apache 2 and GPLv3 licenses.
  * 
@@ -37,17 +42,21 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-package edu.emory.cci.aiw.cvrg.eureka.webapp.json;
+/**
+ *
+ * @author Andrew Post
+ */
+public class EurekaClientProvider implements Provider<EurekaClient> {
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
+    private final String servicesUrl;
 
-public abstract class EventMixin {
-    @JsonCreator
-    public EventMixin(@JsonProperty("id") String id) { }
-	
-    @JsonIgnore public abstract boolean isConcatenable();
-    @JsonIgnore public abstract boolean isSolid();
-    @JsonIgnore public abstract String[] getChildren();
+    public EurekaClientProvider(String inServicesUrl) {
+        this.servicesUrl = inServicesUrl;
+    }
+
+    @Override
+    public EurekaClient get() {
+        return new EurekaClient(this.servicesUrl);
+    }
+
 }
