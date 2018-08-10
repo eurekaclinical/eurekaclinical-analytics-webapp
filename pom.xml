@@ -25,8 +25,8 @@
         <eurekaclinical-ontology-version>2.0.2</eurekaclinical-ontology-version>
         <aiw-i2b2-etl-version>4.0-Beta-8</aiw-i2b2-etl-version>
         <cas-mock-version>2.1</cas-mock-version>
-        <eurekaclinical-analytics-service-version>1.1-Beta-10</eurekaclinical-analytics-service-version>
-        <eurekaclinical-protempa-service-version>1.1-Beta-28</eurekaclinical-protempa-service-version>
+        <eurekaclinical-analytics-service-version>1.1-Beta-11</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>1.1-Beta-29</eurekaclinical-protempa-service-version>
         <eurekaclinical-protempa-client-version>1.0</eurekaclinical-protempa-client-version>
         <eurekaclinical-user-client-version>1.1</eurekaclinical-user-client-version>
         <eurekaclinical-user-service-version>2.0</eurekaclinical-user-service-version>
@@ -173,7 +173,7 @@
                             </deployables>
                             <configuration>
                                 <properties>
-                                    <cargo.jvmargs>-Xmx4G</cargo.jvmargs>
+                                    <cargo.jvmargs>-Xmx10G</cargo.jvmargs>
                                 </properties>
                             </configuration>
                         </configuration>
@@ -482,6 +482,17 @@
                                 <configuration>
                                     <changeLogFile>${project.build.directory}/eurekaclinical-protempa-service/dbmigration/i2b2-data-schema-changelog.xml</changeLogFile>
                                     <url>jdbc:h2:file:${project.build.directory}/eureka-db/i2b2-data-schema</url>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>liquibase-populate-phenotypes</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                                <configuration>
+                                    <changeLogFile>${project.build.directory}/eureka-config/dbmigration/phenotypes-changelog.xml</changeLogFile>
+                                    <url>jdbc:h2:file:${project.build.directory}/eureka-db/eureka-services</url>
                                 </configuration>
                             </execution>
                         </executions>
