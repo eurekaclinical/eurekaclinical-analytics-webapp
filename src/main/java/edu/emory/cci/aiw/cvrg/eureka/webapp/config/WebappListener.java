@@ -40,13 +40,16 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
  * #L%
  */
 
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalRegistryClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalUserClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClientProvider;
 import com.google.inject.Injector;
 import javax.servlet.ServletContextEvent;
 
 import com.google.inject.Module;
 import com.google.inject.servlet.GuiceServletContextListener;
 
-import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EtlClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalProtempaClientProvider;
 
 import javax.servlet.ServletContext;
 import org.eurekaclinical.common.config.ApiGatewayServletModule;
@@ -63,15 +66,15 @@ public class WebappListener extends GuiceServletContextListener {
 	private final WebappProperties webappProperties;
 	private final EurekaClinicalUserClientProvider userClientProvider;
         private final EurekaClinicalPhenotypeClientProvider phenotypeClientProvider;
-	private final ServicesClientProvider servicesClientProvider;
-	private final EtlClientProvider etlClientProvider;
+	private final EurekaClientProvider servicesClientProvider;
+	private final EurekaClinicalProtempaClientProvider etlClientProvider;
 	private final EurekaClinicalRegistryClientProvider registryClientProvider;
 	private Injector injector;
 
 	public WebappListener() {
 		this.webappProperties = new WebappProperties();
-		this.servicesClientProvider = new ServicesClientProvider(this.webappProperties.getServiceUrl());
-		this.etlClientProvider = new EtlClientProvider(this.webappProperties.getEtlUrl());
+		this.servicesClientProvider = new EurekaClientProvider(this.webappProperties.getServiceUrl());
+		this.etlClientProvider = new EurekaClinicalProtempaClientProvider(this.webappProperties.getEtlUrl());
 		this.userClientProvider = new EurekaClinicalUserClientProvider(this.webappProperties.getUserServiceUrl());
                 this.phenotypeClientProvider = new EurekaClinicalPhenotypeClientProvider(this.webappProperties.getPhenotypeServiceUrl());
 		this.registryClientProvider = new EurekaClinicalRegistryClientProvider(this.webappProperties.getRegistryServiceUrl());
@@ -86,8 +89,6 @@ public class WebappListener extends GuiceServletContextListener {
 				"webappProperties", this.webappProperties);
 	}
 
-
-
 	@Override
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
 		super.contextDestroyed(servletContextEvent);
@@ -99,12 +100,13 @@ public class WebappListener extends GuiceServletContextListener {
 	protected Injector getInjector() {
 		this.injector = new InjectorSupport(
 				new Module[]{
-					new AppModule(this.webappProperties, 
+					new AppModule(this.webappProperties,
+                                                this.servicesClientProvider,
+                                                this.etlClientProvider,
                                                 this.userClientProvider, 
-                                                this.phenotypeClientProvider, 
-                                                this.etlClientProvider,                                                 
-                                                this.servicesClientProvider,                                                 
-                                                this.registryClientProvider),
+                                                this.registryClientProvider,
+                                                this.phenotypeClientProvider 
+                                            ),
 					new ApiGatewayServletModule(this.webappProperties)
 				},
 				this.webappProperties).getInjector();
