@@ -254,6 +254,14 @@
         </insert>
     </changeSet>
     <changeSet author="arpost" id="2">
+        <insert tableName="ID_POOLS">
+            <column name="ID" valueSequenceNext="ID_POOL_SEQ"/>
+            <column name="OWNER_ID" valueComputed="(SELECT ID FROM USERS WHERE username='superuser')"/>
+            <column name="NAME" value="diagnosis_id"/>
+            <column name="DESCRIPTION" value="diagnosis id pool"/>
+        </insert>
+    </changeSet>
+    <changeSet author="arpost" id="3">
         <insert tableName="DESTINATIONS">
             <column name="ID" valueSequenceNext="DEST_SEQ"/>
             <column name="OWNER_ID" valueNumeric="1"/>
@@ -315,7 +323,18 @@
             <column name="TABLENAME" value="visit"/>
             <column name="COLUMNNAME" value="visit_id"/>
             <column name="RANK" valueNumeric="1"/>
-            <column name="PATH" value="[Encounter Event 0]>patientDetails[Patient Constant 0].patientId$NOMINALVALUE"/>
+            <column name="PATH" value="[Encounter Event 0].encounterId$NOMINALVALUE"/>
+            <!--<column name="FORMAT" value=""/>-->
+            <column name="ROWRANK" value="1"/>
+            <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
+        </insert>
+        <insert tableName="TF_DEST_TABLECOLUMNS">
+            <column name="ID" valueSequenceNext="TF_DEST_TC_SEQ"/>
+            <column name="TABULARFILEDESTINATIONS_ID" valueSequenceCurrent="DEST_SEQ"/>
+            <column name="TABLENAME" value="visit"/>
+            <column name="COLUMNNAME" value="patient_id"/>
+            <column name="RANK" valueNumeric="2"/>
+            <column name="PATH" value="[Encounter Event 0]>patientDetails[PatientDetails Constant 0].patientId$NOMINALVALUE"/>
             <!--<column name="FORMAT" value=""/>-->
             <column name="ROWRANK" value="1"/>
             <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
@@ -325,7 +344,7 @@
             <column name="TABULARFILEDESTINATIONS_ID" valueSequenceCurrent="DEST_SEQ"/>
             <column name="TABLENAME" value="visit"/>
             <column name="COLUMNNAME" value="start_ts"/>
-            <column name="RANK" valueNumeric="2"/>
+            <column name="RANK" valueNumeric="3"/>
             <column name="PATH" value="[Encounter Event 0].start$DATEVALUE"/>
             <column name="FORMAT" value="yyyy-MM-dd'T'HH:mm:ss"/>
             <column name="ROWRANK" value="1"/>
@@ -336,7 +355,7 @@
             <column name="TABULARFILEDESTINATIONS_ID" valueSequenceCurrent="DEST_SEQ"/>
             <column name="TABLENAME" value="visit"/>
             <column name="COLUMNNAME" value="end_ts"/>
-            <column name="RANK" valueNumeric="3"/>
+            <column name="RANK" valueNumeric="4"/>
             <column name="PATH" value="[Encounter Event 0].finish$DATEVALUE"/>
             <column name="FORMAT" value="yyyy-MM-dd'T'HH:mm:ss"/>
             <column name="ROWRANK" value="1"/>
@@ -351,7 +370,7 @@
             <column name="PATH" value="[ICD9:Diagnoses Event 0].localUniqueId$NOMINALVALUE"/>
             <!--<column name="FORMAT" value=""/>-->
             <column name="ROWRANK" value="1"/>
-            <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
+            <column name="IDPOOL_ID" valueComputed="(SELECT ID FROM ID_POOLS WHERE NAME='diagnosis_id')"/>
         </insert>
         <insert tableName="TF_DEST_TABLECOLUMNS">
             <column name="ID" valueSequenceNext="TF_DEST_TC_SEQ"/>
@@ -360,6 +379,17 @@
             <column name="COLUMNNAME" value="visit_id"/>
             <column name="RANK" valueNumeric="2"/>
             <column name="PATH" value="[ICD9:Diagnoses Event 0]>encounter[Encounter Event 0].encounterId$NOMINALVALUE"/>
+            <!--<column name="FORMAT" value=""/>-->
+            <column name="ROWRANK" value="1"/>
+            <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
+        </insert>
+        <insert tableName="TF_DEST_TABLECOLUMNS">
+            <column name="ID" valueSequenceNext="TF_DEST_TC_SEQ"/>
+            <column name="TABULARFILEDESTINATIONS_ID" valueSequenceCurrent="DEST_SEQ"/>
+            <column name="TABLENAME" value="diagnosis"/>
+            <column name="COLUMNNAME" value="diagnosis_id_source_value"/>
+            <column name="RANK" valueNumeric="3"/>
+            <column name="PATH" value="[ICD9:Diagnoses Event 0].localUniqueId$NOMINALVALUE"/>
             <!--<column name="FORMAT" value=""/>-->
             <column name="ROWRANK" value="1"/>
             <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
