@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-analytics-webapp</artifactId>
-    <version>2.0-Beta-2-SNAPSHOT</version>
+    <version>2.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Eureka! Clinical Analytics WebApp</name>
     <description>Eureka! Clinical Analytics WebApp is the implementation 
@@ -24,18 +24,18 @@
         <commons-codec-version>1.4</commons-codec-version>
         <eurekaclinical-ontology-version>2.0.2</eurekaclinical-ontology-version>
         <eurekaclinical-phenotype-service-version>1.0-SNAPSHOT</eurekaclinical-phenotype-service-version>
-        <eurekaclinical-phenotype-client-version>1.0-SNAPSHOT</eurekaclinical-phenotype-client-version>
-        <aiw-i2b2-etl-version>4.0-Beta-8</aiw-i2b2-etl-version>
+        <eurekaclinical-phenotype-client-version>1.0-Alpha-1</eurekaclinical-phenotype-client-version>
+        <aiw-i2b2-etl-version>4.0</aiw-i2b2-etl-version>
         <cas-mock-version>2.1</cas-mock-version>
-        <eurekaclinical-analytics-service-version>2.0-Beta-1</eurekaclinical-analytics-service-version>
-        <eurekaclinical-protempa-service-version>2.0-Beta-3-SNAPSHOT</eurekaclinical-protempa-service-version>
-        <eurekaclinical-protempa-client-version>2.0-Beta-3-SNAPSHOT</eurekaclinical-protempa-client-version>
-        <eurekaclinical-user-client-version>1.1</eurekaclinical-user-client-version>
+        <eurekaclinical-analytics-service-version>2.0</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>2.1-SNAPSHOT</eurekaclinical-protempa-service-version>
+        <eurekaclinical-protempa-client-version>3.0-Alpha-1</eurekaclinical-protempa-client-version>
+        <eurekaclinical-user-client-version>1.2</eurekaclinical-user-client-version>
         <eurekaclinical-user-service-version>2.0</eurekaclinical-user-service-version>
-        <eurekaclinical-registry-client-version>1.3</eurekaclinical-registry-client-version>
-        <eureka-client-version>4.0-Beta-7-SNAPSHOT</eureka-client-version>
-        <eurekaclinical-standard-apis-version>3.0-Beta-1</eurekaclinical-standard-apis-version>
-        <eurekaclinical-common-version>4.0-Beta-1</eurekaclinical-common-version>
+        <eurekaclinical-registry-client-version>1.4</eurekaclinical-registry-client-version>
+        <eureka-client-version>5.0-Alpha-2</eureka-client-version>
+        <eurekaclinical-standard-apis-version>3.0</eurekaclinical-standard-apis-version>
+        <eurekaclinical-common-version>4.0</eurekaclinical-common-version>
     </properties>
 	
     <scm>
