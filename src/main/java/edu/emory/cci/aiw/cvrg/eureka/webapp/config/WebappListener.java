@@ -65,6 +65,7 @@ public class WebappListener extends GuiceServletContextListener {
 
 	private final WebappProperties webappProperties;
 	private final EurekaClinicalUserClientProvider userClientProvider;
+        private final EurekaClinicalPhenotypeClientProvider phenotypeClientProvider;
 	private final EurekaClientProvider servicesClientProvider;
 	private final EurekaClinicalProtempaClientProvider etlClientProvider;
 	private final EurekaClinicalRegistryClientProvider registryClientProvider;
@@ -75,6 +76,7 @@ public class WebappListener extends GuiceServletContextListener {
 		this.servicesClientProvider = new EurekaClientProvider(this.webappProperties.getServiceUrl());
 		this.etlClientProvider = new EurekaClinicalProtempaClientProvider(this.webappProperties.getEtlUrl());
 		this.userClientProvider = new EurekaClinicalUserClientProvider(this.webappProperties.getUserServiceUrl());
+                this.phenotypeClientProvider = new EurekaClinicalPhenotypeClientProvider(this.webappProperties.getPhenotypeServiceUrl());
 		this.registryClientProvider = new EurekaClinicalRegistryClientProvider(this.webappProperties.getRegistryServiceUrl());
 	}
 
@@ -87,8 +89,6 @@ public class WebappListener extends GuiceServletContextListener {
 				"webappProperties", this.webappProperties);
 	}
 
-
-
 	@Override
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
 		super.contextDestroyed(servletContextEvent);
@@ -100,7 +100,13 @@ public class WebappListener extends GuiceServletContextListener {
 	protected Injector getInjector() {
 		this.injector = new InjectorSupport(
 				new Module[]{
-					new AppModule(this.webappProperties, this.servicesClientProvider, this.etlClientProvider, this.userClientProvider, this.registryClientProvider),
+					new AppModule(this.webappProperties,
+                                                this.servicesClientProvider,
+                                                this.etlClientProvider,
+                                                this.userClientProvider, 
+                                                this.registryClientProvider,
+                                                this.phenotypeClientProvider 
+                                            ),
 					new ApiGatewayServletModule(this.webappProperties)
 				},
 				this.webappProperties).getInjector();

@@ -39,6 +39,7 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.client;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
 import javax.inject.Inject;
 import org.eurekaclinical.common.comm.clients.Route;
 import org.eurekaclinical.common.comm.clients.RouterTable;
@@ -58,13 +59,15 @@ public class WebappRouterTable implements RouterTable {
     private final EurekaClient servicesClient;
     private final EurekaClinicalProtempaClient etlClient;
     private final EurekaClinicalRegistryClient registryClient;
+    private final EurekaClinicalPhenotypeClient phenotypeClient;
 
     @Inject
-    public WebappRouterTable(EurekaClient inServices, EurekaClinicalUserClient inUserClient, EurekaClinicalProtempaClient inEtlClient, EurekaClinicalRegistryClient inRegistryClient) {
+    public WebappRouterTable(EurekaClient inServices, EurekaClinicalUserClient inUserClient, EurekaClinicalProtempaClient inEtlClient, EurekaClinicalRegistryClient inRegistryClient,EurekaClinicalPhenotypeClient inPhenotypeClient) {
         this.servicesClient = inServices;
         this.userClient = inUserClient;
         this.etlClient = inEtlClient;
         this.registryClient = inRegistryClient;
+        this.phenotypeClient = inPhenotypeClient;
     }
 
     @Override
@@ -77,8 +80,14 @@ public class WebappRouterTable implements RouterTable {
             new Route("/output", "/api/protected/output", this.etlClient),
             new Route("/jobmodes", "/api/protected/jobmodes", this.etlClient),
             new Route("/components", "/api/protected/components", this.registryClient),
+            new Route("/phenotypes", "/api/protected/phenotypes", this.phenotypeClient),
+            new Route("/frequencytypes", "/api/protected/frequencytypes", this.phenotypeClient),
+            new Route("/thresholdsops", "/api/protected/thresholdsops", this.phenotypeClient),
+            new Route("/relationops", "/api/protected/relationops", this.phenotypeClient),
+            new Route("/timeunits", "/api/protected/timeunits", this.phenotypeClient),
+            new Route("/valuecomps", "/api/protected/valuecomps", this.phenotypeClient),
+            new Route("/jobs", "/api/protected/jobs", this.etlClient),
             new Route("/", "/api/protected/", this.servicesClient)
         };
     }
-
 }
