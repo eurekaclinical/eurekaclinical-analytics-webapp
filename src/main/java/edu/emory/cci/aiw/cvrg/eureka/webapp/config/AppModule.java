@@ -50,6 +50,7 @@ import com.google.inject.servlet.SessionScoped;
 import org.eurekaclinical.common.comm.clients.RouterTable;
 import org.eurekaclinical.eureka.client.EurekaClient;
 import org.eurekaclinical.protempa.client.EurekaClinicalProtempaClient;
+import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
 import org.eurekaclinical.registry.client.EurekaClinicalRegistryClient;
 import org.eurekaclinical.standardapis.props.CasEurekaClinicalProperties;
 import org.eurekaclinical.user.client.EurekaClinicalUserClient;
@@ -65,14 +66,18 @@ class AppModule extends AbstractModule {
     private final EurekaClinicalProtempaClientProvider etlClientProvider;
     private final EurekaClientProvider servicesClientProvider;
     private final EurekaClinicalRegistryClientProvider registryClientProvider;
+    private final EurekaClinicalPhenotypeClientProvider phenotypeClientProvider;        
 
-    AppModule(WebappProperties webappProperties, EurekaClientProvider inServicesClientProvider, EurekaClinicalProtempaClientProvider inEtlClientProvider, EurekaClinicalUserClientProvider inUserClient, EurekaClinicalRegistryClientProvider inRegistryClient) {
+    AppModule(WebappProperties webappProperties, EurekaClientProvider inServicesClientProvider, EurekaClinicalProtempaClientProvider inEtlClientProvider, EurekaClinicalUserClientProvider inUserClient, EurekaClinicalRegistryClientProvider inRegistryClient,
+		EurekaClinicalPhenotypeClientProvider inPhenotypeClientProvider                
+        ) {
         assert webappProperties != null : "webappProperties cannot be null";
         this.webappProperties = webappProperties;
         this.userClientProvider = inUserClient;
         this.servicesClientProvider = inServicesClientProvider;
         this.etlClientProvider = inEtlClientProvider;
         this.registryClientProvider = inRegistryClient;
+        this.phenotypeClientProvider = inPhenotypeClientProvider;
     }
 
     @Override
@@ -84,6 +89,7 @@ class AppModule extends AbstractModule {
         bind(EurekaClinicalProtempaClient.class).toProvider(this.etlClientProvider).in(SessionScoped.class);
         bind(EurekaClinicalUserClient.class).toProvider(this.userClientProvider).in(SessionScoped.class);
         bind(EurekaClinicalRegistryClient.class).toProvider(this.registryClientProvider).in(SessionScoped.class);
+        bind(EurekaClinicalPhenotypeClient.class).toProvider(this.phenotypeClientProvider).in(SessionScoped.class);                
     }
 
 }

@@ -48,5 +48,6 @@ public final class RequestAttributes {
 	public static final String USER = "user";
 	public static final String USER_IS_ACTIVATED = "userIsActivated";
 	public static final String User_Webapp_URL = "userWebappURL";
-	public static final String User_Service_URL = "userServiceURL";        
+	public static final String User_Service_URL = "userServiceURL"; 
+	public static final String Phenotype_Service_URL = "phenotypeServiceURL"; 
 }

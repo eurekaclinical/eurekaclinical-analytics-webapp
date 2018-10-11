@@ -6,6 +6,13 @@ It implements a proxy servlet and router for web clients to access the web servi
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-analytics-webapp)
 
+## Version 2.0
+The API gateway has no new functionality, but the services to which it provides
+access have the following new and changed functionality:
+* Basic support for id generation for tabular files.
+* New data processing modes for managing phenotypes.
+* Phenotype data store.
+
 ## Version 1.0
 The version 1.0 series is a refactoring of the eureka project's eureka-webapp module. The functionality is the same as in the last release of eureka-webapp.
 
