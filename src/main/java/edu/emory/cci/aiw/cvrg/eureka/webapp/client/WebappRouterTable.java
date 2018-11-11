@@ -87,6 +87,7 @@ public class WebappRouterTable implements RouterTable {
             new Route("/timeunits", "/api/protected/timeunits", this.phenotypeClient),
             new Route("/valuecomps", "/api/protected/valuecomps", this.phenotypeClient),
             new Route("/jobs", "/api/protected/jobs", this.etlClient),
+            new Route("/destinations", "/api/protected/destinations", this.etlClient),
             new Route("/", "/api/protected/", this.servicesClient)
         };
     }
