@@ -29,7 +29,7 @@
         <cas-mock-version>2.1</cas-mock-version>
         <eurekaclinical-analytics-service-version>2.1-Alpha-3-SNAPSHOT</eurekaclinical-analytics-service-version>
         <eurekaclinical-protempa-service-version>2.1-Alpha-3-SNAPSHOT</eurekaclinical-protempa-service-version>
-        <eurekaclinical-protempa-client-version>3.0-Alpha-2-SNAPSHOT</eurekaclinical-protempa-client-version>
+        <eurekaclinical-protempa-client-version>3.0-Alpha-2</eurekaclinical-protempa-client-version>
         <eurekaclinical-user-client-version>1.2</eurekaclinical-user-client-version>
         <eurekaclinical-user-service-version>2.0</eurekaclinical-user-service-version>
         <eurekaclinical-registry-client-version>1.4</eurekaclinical-registry-client-version>
