@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-analytics-webapp</artifactId>
-    <version>2.1-Alpha-2-SNAPSHOT</version>
+    <version>3.0-Alpha-2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Eureka! Clinical Analytics WebApp</name>
     <description>Eureka! Clinical Analytics WebApp is the implementation 
