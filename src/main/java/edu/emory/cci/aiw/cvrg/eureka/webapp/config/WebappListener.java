@@ -50,6 +50,7 @@ import com.google.inject.Module;
 import com.google.inject.servlet.GuiceServletContextListener;
 
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalProtempaClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalPhenotypeClientProvider;
 
 import javax.servlet.ServletContext;
 import org.eurekaclinical.common.config.ApiGatewayServletModule;

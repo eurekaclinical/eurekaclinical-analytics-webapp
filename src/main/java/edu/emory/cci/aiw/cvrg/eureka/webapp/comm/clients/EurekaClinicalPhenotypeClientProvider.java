@@ -1,4 +1,4 @@
-package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
 
 /*-
  * #%L
@@ -45,7 +45,7 @@ import org.eurekaclinical.phenotype.client.EurekaClinicalPhenotypeClient;
 
 /**
  *
- * @author Andrew Post
+ * @author Nita
  */
 public class EurekaClinicalPhenotypeClientProvider implements Provider<EurekaClinicalPhenotypeClient> {
 
