@@ -42,6 +42,7 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalRegistryClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalUserClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalPhenotypeClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalProtempaClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.client.WebappRouterTable;
 import com.google.inject.AbstractModule;

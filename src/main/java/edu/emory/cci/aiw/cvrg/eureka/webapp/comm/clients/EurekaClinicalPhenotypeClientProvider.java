@@ -1,4 +1,4 @@
-package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
+package edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients;
 
 /*-
  * #%L
