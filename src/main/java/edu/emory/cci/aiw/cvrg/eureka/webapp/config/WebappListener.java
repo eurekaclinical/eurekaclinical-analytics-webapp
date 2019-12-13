@@ -43,6 +43,8 @@ package edu.emory.cci.aiw.cvrg.eureka.webapp.config;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalRegistryClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalUserClientProvider;
 import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClientProvider;
+import edu.emory.cci.aiw.cvrg.eureka.webapp.comm.clients.EurekaClinicalPhenotypeClientProvider;
+
 import com.google.inject.Injector;
 import javax.servlet.ServletContextEvent;
 
