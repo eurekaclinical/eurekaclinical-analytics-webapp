@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-analytics-webapp</artifactId>
-    <version>3.1-Alpha-1-SNAPSHOT</version>
+    <version>3.1-Alpha-2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Eureka! Clinical Analytics WebApp</name>
     <description>Eureka! Clinical Analytics WebApp is the implementation 
@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
-        <version>4-Alpha-4-SNAPSHOT</version>
+        <version>4-Alpha-3</version>
     </parent>
 
     <properties>
