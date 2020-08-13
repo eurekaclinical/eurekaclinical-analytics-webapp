@@ -395,11 +395,4 @@
             <!--<column name="IDPOOL_ID" valueNumeric="1"/>-->
         </insert>
     </changeSet>
-    	<changeSet author="nita" id="4">
-		<insert tableName="SOURCECONFIGS">
-			<column name="ID" valueSequenceNext="SOURCECONFIG_SEQ"/>
-			<column name="NAME" value="CDW All of Us Care Sites"/>
-			<column name="OWNER_ID" valueNumeric="1"/>
-		</insert>	
-	</changeSet>
 </databaseChangeLog>
