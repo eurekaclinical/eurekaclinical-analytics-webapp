@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eurekaclinical</groupId>
     <artifactId>eurekaclinical-analytics-webapp</artifactId>
-    <version>3.1-Alpha-3</version>
+    <version>3.1-Alpha-4-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Eureka! Clinical Analytics WebApp</name>
     <description>Eureka! Clinical Analytics WebApp is the implementation 
@@ -42,7 +42,7 @@
         <developerConnection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</developerConnection>
         <connection>scm:git:https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</connection>
         <url>https://github.com/eurekaclinical/eurekaclinical-analytics-webapp.git</url>
-        <tag>eurekaclinical-analytics-webapp-3.1-Alpha-3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
