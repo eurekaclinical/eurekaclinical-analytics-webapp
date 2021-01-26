@@ -25,10 +25,10 @@
         <eurekaclinical-ontology-version>2.0.5</eurekaclinical-ontology-version>
         <eurekaclinical-phenotype-service-version>1.1-Alpha-3</eurekaclinical-phenotype-service-version>
         <eurekaclinical-phenotype-client-version>1.1-Alpha-4</eurekaclinical-phenotype-client-version>
-        <aiw-i2b2-etl-version>4.6</aiw-i2b2-etl-version>
+        <aiw-i2b2-etl-version>4.7</aiw-i2b2-etl-version>
         <cas-mock-version>2.4</cas-mock-version>
-        <eurekaclinical-analytics-service-version>3.1-Alpha-3</eurekaclinical-analytics-service-version>
-        <eurekaclinical-protempa-service-version>3.1-Alpha-4</eurekaclinical-protempa-service-version>
+        <eurekaclinical-analytics-service-version>3.1-Alpha-4</eurekaclinical-analytics-service-version>
+        <eurekaclinical-protempa-service-version>3.1-Alpha-5</eurekaclinical-protempa-service-version>
         <eurekaclinical-protempa-client-version>3.1-Alpha-4</eurekaclinical-protempa-client-version>
         <eurekaclinical-user-client-version>1.7</eurekaclinical-user-client-version>
         <eurekaclinical-user-service-version>2.6</eurekaclinical-user-service-version>
